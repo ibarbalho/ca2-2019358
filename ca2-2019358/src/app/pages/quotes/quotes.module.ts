@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { QuotePageRoutingModule } from './quote-routing.module';
+import { QuotesPageRoutingModule } from './quotes-routing.module';
 
-import { QuotePage } from './quote.page';
+import { QuotesPage } from './quotes.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    QuotePageRoutingModule
+    QuotesPageRoutingModule
   ],
-  declarations: [QuotePage]
+  declarations: [QuotesPage]
 })
-export class QuotePageModule {}
+export class QuotesPageModule {}
