@@ -1,9 +1,39 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>quoteDetails</ion-title>
-  </ion-toolbar>
+	<ion-toolbar color="primary">
+		<ion-buttons slot="start">
+			<ion-back-button defaulthref="/tabs/quotes"></ion-back-button>
+		</ion-buttons>
+		<ion-title>Quote number {{ quote?.quote_id }}</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="unfavouriteEpisode()" *ngIf="isFavourite">
+				<ion-icon name="star" slot="icon-only" color="secondary"></ion-icon>
+			</ion-button>
+			<ion-button (click)="favouriteEpisode()" *ngIf="!isFavourite">
+				<ion-icon name="star-outline" slot="icon-only" color="secondary"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+
+	<ion-card *ngIf="quote" class="movie-card">
+		
+		<ion-item class="movie-info" lines="none">
+			<ion-icon name="megaphone-outline" slot="start"></ion-icon>
+			Quote: {{ quote.quote }}
+		</ion-item>
+
+		<ion-item class="movie-info" lines="none">
+			<ion-icon name="person-outline" slot="start"></ion-icon>
+			Author: {{ quote.author }}
+		</ion-item>
+
+		<ion-item class="movie-info" lines="none">
+			<ion-icon name="film-outline" slot="start"></ion-icon>
+			Serie: {{ quote.series }}
+		</ion-item>
+
+	</ion-card>
 
 </ion-content>
