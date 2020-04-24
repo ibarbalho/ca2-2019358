@@ -8,6 +8,7 @@ import { ApiService } from '../../services/api.service';
     templateUrl: './characters.page.html',
     styleUrls: ['./characters.page.scss'],
 })
+
 export class CharactersPage implements OnInit {
 
     characters: Observable<any>;
