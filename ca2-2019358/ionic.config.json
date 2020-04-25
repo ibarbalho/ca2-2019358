@@ -1,5 +1,7 @@
 {
   "name": "ca2-2019358",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
