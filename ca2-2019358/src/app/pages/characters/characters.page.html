@@ -1,5 +1,5 @@
 <ion-header>
-	<ion-toolbar color="primary">
+	<ion-toolbar color="dark">
 		<ion-title>Characters</ion-title>
 	</ion-toolbar>
 </ion-header>
@@ -8,11 +8,13 @@
 		<ion-item button detail lines="inset" *ngFor="let character of characters | async"
 			(click)="openDetails(character)">
 			{{ character.name }}
-		</ion-item>
-	</ion-list>
+			<ion-avatar slot="end">
+				<img src="{{ character.img }}">
+            </ion-avatar>
+		</ion-item>    
+	</ion-list>    
 
-    
-	<ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" >
+	<ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
 		<ion-infinite-scroll-content loadingSpinner="lines" loadingText="Loading...">
 		</ion-infinite-scroll-content>
 	</ion-infinite-scroll>

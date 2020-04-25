@@ -1,12 +1,19 @@
 <ion-header>
-	<ion-toolbar color="primary">
+	<ion-toolbar color="dark">
 		<ion-title>Quotes</ion-title>
 	</ion-toolbar>
 </ion-header>
 <ion-content>
-	<ion-list>
-		<ion-item button detail lines="inset" *ngFor="let quote of quotes | async" (click)="openDetails(quote)">
-			{{ quote.quote }}
-		</ion-item>
+	<ion-list>	
+
+		<ion-card button detail lines="inset" *ngFor="let quote of quotes | async" (click)="openDetails(quote)">
+			<ion-item>				
+				<ion-label>Author: {{ quote.author }}</ion-label>
+				<ion-button fill="outline" slot="end">View</ion-button>
+			</ion-item>
+
+			<ion-card-content>Quote: {{ quote.quote }}</ion-card-content>
+		</ion-card>
+
 	</ion-list>
 </ion-content>

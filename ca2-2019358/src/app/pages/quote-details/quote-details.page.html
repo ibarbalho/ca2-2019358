@@ -1,17 +1,9 @@
 <ion-header>
-	<ion-toolbar color="primary">
+	<ion-toolbar color="dark">
 		<ion-buttons slot="start">
 			<ion-back-button defaulthref="/tabs/quotes"></ion-back-button>
 		</ion-buttons>
-		<ion-title>Quote number {{ quote?.quote_id }}</ion-title>
-		<ion-buttons slot="end">
-			<ion-button (click)="unfavouriteEpisode()" *ngIf="isFavourite">
-				<ion-icon name="star" slot="icon-only" color="secondary"></ion-icon>
-			</ion-button>
-			<ion-button (click)="favouriteEpisode()" *ngIf="!isFavourite">
-				<ion-icon name="star-outline" slot="icon-only" color="secondary"></ion-icon>
-			</ion-button>
-		</ion-buttons>
+		<ion-title>Quote number {{ quote?.quote_id }}</ion-title>		
 	</ion-toolbar>
 </ion-header>
 
