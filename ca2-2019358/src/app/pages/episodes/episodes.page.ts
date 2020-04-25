@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ApiService } from '../../services/api.service';
 
+
 @Component({
     selector: 'app-episodes',
     templateUrl: './episodes.page.html',
@@ -17,7 +18,6 @@ export class EpisodesPage implements OnInit {
 
     ngOnInit() {
         this.episodes = this.api.getEpisodes();
-        this.api.getEpisodes();
         this.episodes.subscribe(data => {
             console.log('my data: ', data);
 
@@ -25,7 +25,10 @@ export class EpisodesPage implements OnInit {
     }
 
     openDetails(episode) {
-        let episodeId = episode.espisode_id;
+        let episodeId = episode.episode_id;
         this.router.navigateByUrl(`/tabs/episodes/${episodeId}`);
     }
+
+    
 }
+
