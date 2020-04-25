@@ -23,6 +23,8 @@ export class QuotesPage implements OnInit {
         let quoteID = quote.quote_id;
         this.router.navigateByUrl(`/tabs/quotes/${quoteID}`);
     }
+    
+    
 
 }
 

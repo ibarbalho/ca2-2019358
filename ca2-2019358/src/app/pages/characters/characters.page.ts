@@ -11,9 +11,10 @@ import { ApiService } from '../../services/api.service';
 
 export class CharactersPage implements OnInit {
 
+    
     characters: Observable<any>;
 
-    constructor(private router: Router, private api: ApiService) { }
+    constructor(private router: Router, private api: ApiService) {}
 
     ngOnInit() {
         this.characters = this.api.getCharacters();
@@ -24,4 +25,14 @@ export class CharactersPage implements OnInit {
         let characterID = character.char_id;
         this.router.navigateByUrl(`/tabs/characters/${characterID}`);
     }
+
+    loadData(event) {
+    setTimeout(() => {
+      console.log('Done');
+      event.target.complete();
+    }, 2000);
+  }
+  
+
+    
 }
