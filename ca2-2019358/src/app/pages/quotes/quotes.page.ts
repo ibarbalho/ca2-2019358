@@ -10,8 +10,7 @@ import { ApiService } from '../../services/api.service';
 })
 export class QuotesPage implements OnInit {
 
-    quotes: Observable<any>;
-    author: string = '';
+    quotes: Observable<any>;    
 
     constructor(private router: Router, private api: ApiService) { }
 
@@ -23,12 +22,8 @@ export class QuotesPage implements OnInit {
     openDetails(quote) {
         let quoteID = quote.quote_id;
         this.router.navigateByUrl(`/tabs/quotes/${quoteID}`);
-    }
-    
-    searchByAuthor() {
-        this.quotes = this.api.getQuoteSearch(this.author);
-    }
-    
+    }    
+        
 
 }
 

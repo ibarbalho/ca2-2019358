@@ -17,6 +17,7 @@ export class CharacterDetailsPage implements OnInit {
 
     constructor(private activatedRoute: ActivatedRoute, private api: ApiService, private favouriteService: FavouriteService) { }
 
+    //Load characteres
     ngOnInit() {
         this.characterId = this.activatedRoute.snapshot.paramMap.get('id');
         this.api.getCharacter(this.characterId).subscribe(res => {
@@ -29,12 +30,14 @@ export class CharacterDetailsPage implements OnInit {
 
     }
 
+    //Function favourite character by clik on the top bar
     favouriteCharacter() {
         this.favouriteService.favouriteCharacter(this.characterId).then(() => {
             this.isFavourite = true;
         });
     }
 
+    //Function unfavourite character by clik on the top bar
     unfavouriteCharacter() {
         this.favouriteService.unfavouriteCharacter(this.characterId).then(() => {
             this.isFavourite = false;

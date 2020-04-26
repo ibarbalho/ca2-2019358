@@ -16,6 +16,7 @@ export class EpisodeDetailsPage implements OnInit {
 
     constructor(private activatedRoute: ActivatedRoute, private api: ApiService, private favouriteService: FavouriteService) { }
 
+    //Load details
     ngOnInit() {
 
         this.episodeId = this.activatedRoute.snapshot.paramMap.get('id');
@@ -29,12 +30,14 @@ export class EpisodeDetailsPage implements OnInit {
         });
     }
 
+    //Function favourite episode by clik on the top bar
     favouriteEpisode() {
         this.favouriteService.favouriteEpisode(this.episodeId).then(() => {
             this.isFavourite = true;
         });
     }
 
+    //Function unfavourite episode by clik on the top bar
     unfavouriteEpisode() {
         this.favouriteService.unfavouriteEpisode(this.episodeId).then(() => {
             this.isFavourite = false;

@@ -13,16 +13,18 @@ export class CharactersPage implements OnInit {
 
 
     characters = [];
-    limit = 15;
-    offset = 0;
+    offset = 0;    
+    limit = 15;    
     maxCharacters = 63;
 
     constructor(private router: Router, private api: ApiService) { }
-
+    
+    //Load characters
     ngOnInit() {
         this.loadCharacters();
     }
 
+    
     openDetails(character) {
         let characterID = character.char_id;
         this.router.navigateByUrl(`/tabs/characters/${characterID}`);
@@ -39,6 +41,7 @@ export class CharactersPage implements OnInit {
             })
     }
 
+    //Infinite Scroll
     loadData(event?) {
         this.offset += 15;
         this.loadCharacters(event);

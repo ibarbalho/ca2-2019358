@@ -11,17 +11,13 @@ import { ApiService } from '../../services/api.service';
 
 export class DeathsPage implements OnInit {
     deaths: Observable<any>;
-    name: string = '';
-
+    
     constructor(private router: Router, private api: ApiService) { }
 
     ngOnInit() {
         this.deaths = this.api.getDeaths();
         this.deaths.subscribe(data => { console.log('my data', data); });
-    }    
-
-    searchByName() {
-        this.deaths = this.api.getDeathSearch(this.name);
     }
 
+    
 }

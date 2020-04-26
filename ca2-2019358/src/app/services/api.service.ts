@@ -6,10 +6,8 @@ import { of } from 'rxjs';
     providedIn: 'root'
 })
 export class ApiService {
-
-    allQuotes: Array<any>;
-    allDeaths: Array<any>;
-
+   
+    
     constructor(private http: HttpClient) { }
 
 
@@ -22,6 +20,7 @@ export class ApiService {
         return this.http.get(`https://www.breakingbadapi.com/api/episodes/${id}`);
     }
 
+    //Limit and offset to define infinite scroll
     getCharacters(limit: number, offset: number) {
         return this.http.get(`https://breakingbadapi.com/api/characters?limit=${limit}&offset=${offset}`)
     }
@@ -30,10 +29,7 @@ export class ApiService {
         return this.http.get(`https://www.breakingbadapi.com/api/characters/${id}`)
     }
     
-    getQuotes() {
-        this.http.get(('https://breakingbadapi.com/api/quotes')).subscribe(data => {
-            this.allQuotes = data as Array<any>;
-        });
+    getQuotes() {       
         return this.http.get('https://breakingbadapi.com/api/quotes')
     }
 
@@ -41,32 +37,9 @@ export class ApiService {
         return this.http.get(`https://www.breakingbadapi.com/api/quotes/${id}`)
     }
 
-    getQuoteSearch(author: string) {
-        let selectedQuotes: any[] = [];
-        for (let quote of this.allQuotes) {
-            if (quote.author.toLowerCase().includes(author.toLowerCase())) {
-                selectedQuotes.push(quote);
-            }
-        }
-        return of(selectedQuotes);
-    }
-
-    getDeaths() {
-        this.http.get((`https://breakingbadapi.com/api/death-count?name=Gustavo+Fring`)).subscribe(data => {
-            this.allDeaths = data as Array<any>;
-        });
+   
+    getDeaths() {       
         return this.http.get(`https://breakingbadapi.com/api/death-count?name=Gustavo+Fring`)
     }
-
-    getDeathSearch(name: string) {
-        let selectedDeaths: any[] = [];
-        for (let death of this.allDeaths) {
-            if (death.name.toLowerCase().includes(name.toLowerCase())) {
-                selectedDeaths.push(death);
-            }
-        }
-        return of(selectedDeaths);
-    }
-
 
 }
