@@ -2,12 +2,22 @@
 	<ion-toolbar color="dark">
 		<ion-title>Deaths</ion-title>
 	</ion-toolbar>
+	<ion-toolbar color="dark">
+		<ion-searchbar [(ngModel)]="name" (ionChange)="searchByName($event)" placeholder="Search by Name">
+		</ion-searchbar>
+	</ion-toolbar>
 </ion-header>
-
 <ion-content>
+	<ion-list>
 
+		<ion-card *ngFor="let death of deaths | async">
+			<ion-item>
+				Caused by: {{ death.name }}
+			</ion-item>
+			<ion-card-content>
+				Deaths: {{ death.deathCount }}
+			</ion-card-content>
+		</ion-card>
 
-
-
-
+	</ion-list>
 </ion-content>

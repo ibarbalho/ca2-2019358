@@ -6,13 +6,12 @@
 
 <ion-content>
 	<ion-list>
-		<ion-item button detail lines="inset" *ngFor="let character of characters" (click)="openDetails(character)">
-			<ion-label>
-				<h2>{{ character.name }}</h2>				
-			</ion-label>
+		<ion-item name="" *ngFor="let character of characters" (click)="openDetails(character)">
+			<ion-label>	<h2>{{ character.name }}</h2></ion-label>
             <ion-avatar slot="end">
 				<img src="{{ character.img }}">
             </ion-avatar>
+            <ion-icon name="chevron-forward-circle" size="small" color="medium" slot="end"></ion-icon>
 		</ion-item>
 	</ion-list>
 	<ion-infinite-scroll threshold="100%" id="infinite-scroll" (ionInfinite)="loadData($event)">

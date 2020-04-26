@@ -1,6 +1,6 @@
 <ion-header>
 	<ion-toolbar color="dark">
-		<ion-title>Quotes</ion-title>		
+		<ion-title>Quotes</ion-title>
 	</ion-toolbar>
 	<ion-toolbar color="dark">
 		<ion-searchbar [(ngModel)]="author" (ionChange)="searchByAuthor($event)" placeholder="Search by Author">
@@ -10,13 +10,15 @@
 <ion-content>
 	<ion-list>
 
-		<ion-card button detail lines="inset" *ngFor="let quote of quotes | async" (click)="openDetails(quote)">
-			<ion-item>
-				<ion-label>Author: {{ quote.author }}</ion-label>
-				<ion-button fill="outline" slot="end">View</ion-button>
+		<ion-card *ngFor="let quote of quotes | async" (click)="openDetails(quote)">
+			<ion-item>				
+				By: {{ quote.author }}
+				<ion-icon name="chevron-forward-circle" size="small" color="medium" slot="end"></ion-icon>
 			</ion-item>
 
-			<ion-card-content>Quote: {{ quote.quote }}</ion-card-content>
+			<ion-card-content>
+				{{ quote.quote }}
+			</ion-card-content>
 		</ion-card>
 
 	</ion-list>

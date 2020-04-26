@@ -8,6 +8,7 @@ import { of } from 'rxjs';
 export class ApiService {
 
     allQuotes: Array<any>;
+    allDeaths: Array<any>;
 
     constructor(private http: HttpClient) { }
 
@@ -51,7 +52,20 @@ export class ApiService {
     }
 
     getDeaths() {
+        this.http.get((`https://breakingbadapi.com/api/death-count?name=Gustavo+Fring`)).subscribe(data => {
+            this.allDeaths = data as Array<any>;
+        });
         return this.http.get(`https://breakingbadapi.com/api/death-count?name=Gustavo+Fring`)
+    }
+
+    getDeathSearch(name: string) {
+        let selectedDeaths: any[] = [];
+        for (let death of this.allDeaths) {
+            if (death.name.toLowerCase().includes(name.toLowerCase())) {
+                selectedDeaths.push(death);
+            }
+        }
+        return of(selectedDeaths);
     }
 
 
