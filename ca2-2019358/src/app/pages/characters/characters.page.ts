@@ -3,22 +3,24 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ApiService } from '../../services/api.service';
 
+
 @Component({
     selector: 'app-characters',
     templateUrl: './characters.page.html',
     styleUrls: ['./characters.page.scss'],
 })
-
 export class CharactersPage implements OnInit {
 
-    
-    characters: Observable<any>;
 
-    constructor(private router: Router, private api: ApiService) {}
+    characters = [];
+    limit = 15;
+    offset = 0;
+    maxCharacters = 63;
+
+    constructor(private router: Router, private api: ApiService) { }
 
     ngOnInit() {
-        this.characters = this.api.getCharacters();
-        this.characters.subscribe(data => { console.log('my characters: ', data); });
+        this.loadCharacters();
     }
 
     openDetails(character) {
@@ -26,13 +28,24 @@ export class CharactersPage implements OnInit {
         this.router.navigateByUrl(`/tabs/characters/${characterID}`);
     }
 
-    loadData(event) {
-    setTimeout(() => {
-      console.log('Done');
-      event.target.complete();
-    }, 2000);
-  }
-  
+    loadCharacters(event?) {
 
-    
+        this.api.getCharacters(this.limit, this.offset)
+            .subscribe(res => {
+                this.characters = this.characters.concat(res);
+                if (event) {
+                    event.target.complete();
+                }
+            })
+    }
+
+    loadData(event?) {
+        this.offset += 15;
+        this.loadCharacters(event);
+        if (this.offset > this.maxCharacters - 1) {
+            event.target.disable = true;
+        }
+        
+    }
+
 }

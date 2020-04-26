@@ -3,20 +3,20 @@
 		<ion-title>Characters</ion-title>
 	</ion-toolbar>
 </ion-header>
+
 <ion-content>
 	<ion-list>
-		<ion-item button detail lines="inset" *ngFor="let character of characters | async"
-			(click)="openDetails(character)">
-			{{ character.name }}
-			<ion-avatar slot="end">
+		<ion-item button detail lines="inset" *ngFor="let character of characters" (click)="openDetails(character)">
+			<ion-label>
+				<h2>{{ character.name }}</h2>				
+			</ion-label>
+            <ion-avatar slot="end">
 				<img src="{{ character.img }}">
             </ion-avatar>
-		</ion-item>    
-	</ion-list>    
-
-	<ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-		<ion-infinite-scroll-content loadingSpinner="lines" loadingText="Loading...">
+		</ion-item>
+	</ion-list>
+	<ion-infinite-scroll threshold="100%" id="infinite-scroll" (ionInfinite)="loadData($event)">
+		<ion-infinite-scroll-content loading-spinner="crescent" loading-text="Loading...">
 		</ion-infinite-scroll-content>
 	</ion-infinite-scroll>
-
 </ion-content>
